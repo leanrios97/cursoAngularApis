@@ -1,4 +1,4 @@
-<button (click)="toggleProductoDetail()">click</button>
+<button (click)="createNewProduct()">Create new Product</button>
 <div class="products--grid">
   <app-product
     [product]="product"
@@ -11,6 +11,9 @@
   <div *ngIf="productChosen">
     <button (click)="toggleProductoDetail()">close</button>
     <h1> {{ productChosen.title }} </h1>
+    <p> {{productChosen.description}} </p>
+    <button (click)="updateProduct()">Editar </button>
+    <button (click)="deleteProduct()">Eliminar</button>
     <!-- <swiper
       [slidesPerView]="1"
       >
@@ -19,5 +22,5 @@
       </ng-template>
     </swiper>
     <p> {{ productChosen.description }} </p> -->
-  </div>
+  </div >
 </div>

@@ -1,4 +1,4 @@
-<button (click)="createNewProduct()">Create new Product</button>
+<button (click)="createNewProduct()" class="btn btn-primary" style="margin: 10px;">Create new Product</button>
 <div class="products--grid">
   <app-product
     [product]="product"
@@ -6,15 +6,15 @@
     (addedProduct)="onAddToShoppingCart($event)"
     (showProduct)="onShowDetail($event)"
   ></app-product>
-  <button (click)="loadMore()">Load Mora</button>
+  <button (click)="loadMore()" class="btn btn-secondary">Load Mora</button>
 </div>
 <div class="product-detail" [class.active]="showProductDetail">
   <div *ngIf="productChosen">
-    <button (click)="toggleProductoDetail()">close</button>
+    <button (click)="toggleProductoDetail()" class="btn btn-secondary">close</button>
     <h1> {{ productChosen.title }} </h1>
     <p> {{productChosen.description}} </p>
-    <button (click)="updateProduct()">Editar </button>
-    <button (click)="deleteProduct()">Eliminar</button>
+    <button (click)="updateProduct()" class="btn btn-warning">Editar </button>
+    <button (click)="deleteProduct()" class="btn btn-danger">Eliminar</button>
     <!-- <swiper
       [slidesPerView]="1"
       >

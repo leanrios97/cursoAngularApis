@@ -30,6 +30,7 @@ export class ProductsComponent implements OnInit {
 
   limit = 10;
   offset = 0;
+  statusDetail: 'loading' | 'success' | 'error' | 'init' = 'init';
 
   constructor(
     private storeService: StoreService,
@@ -54,18 +55,24 @@ export class ProductsComponent implements OnInit {
     this.showProductDetail = !this.showProductDetail;
   }
   onShowDetail(id: string){
+    this.statusDetail = 'loading';
     this.productsService.getProduct(id)
     .subscribe(data => {
       this.toggleProductoDetail();
       this.productChosen = data;
-    })
+      this.statusDetail = 'success';
+    }, errorMsg => {
+      window.alert(errorMsg)
+      this.statusDetail = 'error';
+    }
+    )
   }
   createNewProduct(){
     const product: CreateProductDTO = {
       title: 'Naruto',
       description: 'el protector de la hoja en modo sabio',
       images: ['https://i.blogs.es/bc1dd2/naruto/1366_2000.png'],
-      price: 1000, 
+      price: 1000,
       categoryId: 2,
     }
     this.productsService.create(product)
